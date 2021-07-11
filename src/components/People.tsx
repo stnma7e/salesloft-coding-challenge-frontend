@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import './People.css';
 import { Person } from './Person';
 import { Person as PersonData } from '../models/Person';
 
 
 export function People() {
     const [peopleData, setPeopleData] = useState<PersonData[]>([]);
+    const [showFrequency, setShowFrequency] = useState<boolean>(false);
 
     useEffect(() => {
         fetch(process.env.REACT_APP_BACKEND_URL + "/people", {
@@ -34,6 +36,14 @@ export function People() {
     return (
         <div>
             PEOPLE
+
+            <button
+                className="frequencyButton"
+                onClick={() => setShowFrequency(!showFrequency)}
+            >
+                Show Frequencies
+            </button>
+
             {people}
         </div>
     )
