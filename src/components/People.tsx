@@ -3,11 +3,13 @@ import './People.css';
 import { Person } from './Person';
 import { Person as PersonData } from '../models/Person';
 import { FrequencyChart } from './FrequencyChart';
+import { DuplicatePeople } from './DuplicatePeople';
 
 
 export function People() {
     const [peopleData, setPeopleData] = useState<PersonData[]>([]);
     const [showFrequency, setShowFrequency] = useState<boolean>(false);
+    const [showDuplicates, setShowDuplicates] = useState<boolean>(false);
 
     useEffect(() => {
         fetch(process.env.REACT_APP_BACKEND_URL + "/people", {
@@ -47,17 +49,33 @@ export function People() {
             </div>;
     }
 
+    let duplicates = null;
+    if (showDuplicates) {
+        duplicates =
+            <div>
+                DUPLICATES:
+            </div>
+    }
 
     return (
         <div>
             PEOPLE
 
             <button
-                className="frequencyButton"
+                className="showExtraButton"
                 onClick={() => setShowFrequency(!showFrequency)}
             >
                 Show Frequencies
             </button>
+
+            <button
+                className="showExtraButton"
+                onClick={() => setShowDuplicates(!showDuplicates)}
+            >
+                Show Duplicates
+            </button>
+
+            {duplicates}
 
             {frequencyChart}
 
