@@ -1,4 +1,5 @@
 import React from 'react';
+import { frequencies } from '../utilities/Frequency';
 
 
 interface PersonProps {
@@ -6,6 +7,8 @@ interface PersonProps {
     lastName: string,
     email: string,
     jobTitle: string,
+
+    showFrequency?: boolean
 }
 
 export function Person(props: PersonProps) {

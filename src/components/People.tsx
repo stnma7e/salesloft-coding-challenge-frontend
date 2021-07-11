@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './People.css';
 import { Person } from './Person';
 import { Person as PersonData } from '../models/Person';
+import { FrequencyChart } from './FrequencyChart';
 
 
 export function People() {
@@ -16,23 +17,37 @@ export function People() {
         })
             .then(resp => resp.json())
             .then((resp: PersonData[]) => {
-                console.log(resp)
                 setPeopleData(resp);
             })
             .catch(err => {
                 setPeopleData([]);
             });
     }, []);
-    
-    const people = peopleData.map(person =>
+
+    const people = peopleData.map((person: PersonData, i: number) =>
         <Person
             firstName={person.first_name}
             lastName={person.last_name}
             email={person.email_address}
             jobTitle={person.title}
+            showFrequency={showFrequency}
+
+            key={i}
         />
     );
-    
+
+    let frequencyChart = null;
+    if (showFrequency) {
+        frequencyChart =
+            <div>
+                FREQUENCIES:
+                <FrequencyChart
+                    inputs={peopleData.map(person => person.email_address)}
+                />
+            </div>;
+    }
+
+
     return (
         <div>
             PEOPLE
@@ -43,6 +58,8 @@ export function People() {
             >
                 Show Frequencies
             </button>
+
+            {frequencyChart}
 
             {people}
         </div>
