@@ -13,9 +13,9 @@ export function Person(props: PersonProps) {
 
     return (
         <div>
-            <div>Name: {name} </div>
-            <div>Email: {props.email} </div>
-            <div>Job title: {props.jobTitle} </div>
+            <h2>Name: {name}</h2>
+            <div>Email: {props.email}</div>
+            <div>Job title: {props.jobTitle}</div>
         </div>
     )
 }
