@@ -1,0 +1,67 @@
+interface Counts {
+    emails_sent: number,
+    emails_viewed: number,
+    emails_clicked: number,
+    emails_replied_to: number,
+    emails_bounced: number,
+    calls: number
+}
+
+interface Owner {
+    _href: string,
+    id: number
+}
+
+export interface Person {
+    id: number,
+    created_at: Date,
+    updated_at: Date,
+    last_contacted_at: any,
+    last_replied_at: any,
+    first_name: string,
+    last_name: string,
+    display_name: string,
+    email_address: string,
+    full_email_address: string,
+    secondary_email_address: string,
+    personal_email_address: string,
+    phone: string,
+    phone_extension: any,
+    home_phone: any,
+    mobile_phone: any,
+    linkedin_url: any,
+    title: string,
+    city: string,
+    state: string,
+    country: string,
+    work_city: any,
+    work_state: any,
+    work_country: any,
+    crm_url: any,
+    crm_id: any,
+    crm_object_type: any,
+    owner_crm_id: any,
+    person_company_name: any,
+    person_company_website: string,
+    person_company_industry: any,
+    do_not_contact: boolean,
+    bouncing: boolean,
+    locale: string,
+    eu_resident: boolean,
+    personal_website: any,
+    twitter_handle: any,
+    last_contacted_type: any,
+    job_seniority: any,
+    custom_fields: any,
+    tags: any[],
+    contact_restrictions: any[]
+    counts: Counts,
+    account: any,
+    owner: Owner,
+    last_contacted_by: any,
+    import: any,
+    person_stage: any,
+    most_recent_cadence: any,
+    last_completed_step_cadence: any,
+    last_completed_step: any
+}
