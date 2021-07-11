@@ -7,8 +7,6 @@ interface PersonProps {
     lastName: string,
     email: string,
     jobTitle: string,
-
-    showFrequency?: boolean
 }
 
 export function Person(props: PersonProps) {
@@ -16,7 +14,7 @@ export function Person(props: PersonProps) {
 
     return (
         <div>
-            <h2>Name: {name}</h2>
+            <h4>Name: {name}</h4>
             <div>Email: {props.email}</div>
             <div>Job title: {props.jobTitle}</div>
         </div>

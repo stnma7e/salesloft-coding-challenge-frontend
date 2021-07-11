@@ -32,7 +32,6 @@ export function People() {
             lastName={person.last_name}
             email={person.email_address}
             jobTitle={person.title}
-            showFrequency={showFrequency}
 
             key={i}
         />
@@ -54,6 +53,9 @@ export function People() {
         duplicates =
             <div>
                 DUPLICATES:
+                <DuplicatePeople
+                    people={peopleData}
+                />
             </div>
     }
 
