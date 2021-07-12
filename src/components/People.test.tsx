@@ -14,3 +14,15 @@ test('frequencies are toggled when clicking button', () => {
     fireEvent.click(freqButton);
     expect(frequencyLabel).not.toBeInTheDocument();
 });
+
+test('duplicates are toggled when clicking button', () => {
+    render(<People />);
+    const freqButton = screen.getByText("Show Duplicates");
+    fireEvent.click(freqButton);
+  
+    const frequencyLabel = screen.getByText("DUPLICATES:");
+    expect(frequencyLabel).toBeInTheDocument();
+    
+    fireEvent.click(freqButton);
+    expect(frequencyLabel).not.toBeInTheDocument();
+});
