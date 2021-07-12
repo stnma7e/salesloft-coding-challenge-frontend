@@ -14,7 +14,7 @@ export function Person(props: PersonProps) {
 
     return (
         <div className="person">
-            <h4>Name: {name}</h4>
+            <div>Name: {name}</div>
             <div>Email: {props.email}</div>
             <div>Job title: {props.jobTitle}</div>
         </div>

@@ -41,7 +41,7 @@ export function People() {
     if (showFrequency) {
         frequencyChart =
             <div>
-                FREQUENCIES:
+                <span className="title">FREQUENCIES:</span>
                 <FrequencyChart
                     inputs={peopleData.map(person => person.email_address)}
                 />
@@ -52,7 +52,7 @@ export function People() {
     if (showDuplicates) {
         duplicates =
             <div>
-                DUPLICATES:
+                <span className="title">DUPLICATES:</span>
                 <DuplicatePeople
                     people={peopleData}
                 />
@@ -61,8 +61,6 @@ export function People() {
 
     return (
         <div>
-            PEOPLE
-
             <button
                 className="showExtraButton"
                 onClick={() => setShowFrequency(!showFrequency)}
@@ -81,7 +79,10 @@ export function People() {
 
             {frequencyChart}
 
-            {people}
+            <div>
+                <span className="title">PEOPLE:</span>
+                {people}
+            </div>
         </div>
     )
 }
