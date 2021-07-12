@@ -12,7 +12,7 @@ test('frequency chart only contains letters that are given', () => {
     for (let input of inputs) {
         for (let c of "abcdefghijklnmopqrstuvwxyz") {
             if (input.indexOf(c) > -1) {
-                const label = screen.getByText(c + ": 1");
+                const label = screen.getByText(c);
                 expect(label).toBeInTheDocument();
             }
         }

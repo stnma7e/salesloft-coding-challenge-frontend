@@ -36,6 +36,7 @@ export function DuplicatePeople(props: DuplicatePeopleProps) {
                     <DuplicatePeopleCard
                         person1={p1}
                         person2={p2}
+                        key={i}
                     />
                 );
             })}
