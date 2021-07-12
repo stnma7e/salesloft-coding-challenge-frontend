@@ -27,9 +27,9 @@ export function DuplicatePeople(props: DuplicatePeopleProps) {
 
     return (
         <div>
-            {duplicates.map(([p1, p2]) => {
+            {duplicates.map(([p1, p2], i: number) => {
                return (
-                   <div>
+                   <div key={i}>
                        <h2>Potential Duplicate:</h2>
                        <PersonComponent
                             firstName={p1.first_name}
