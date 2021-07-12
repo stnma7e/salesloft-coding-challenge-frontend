@@ -1,4 +1,5 @@
 import React from 'react';
+import './DuplicatePeople.css';
 import { Person as PersonComponent } from './Person';
 import { Person } from '../models/Person';
 import { editDistance } from '../utilities/EditDistance';
@@ -20,9 +21,9 @@ export function DuplicatePeople(props: DuplicatePeopleProps) {
 
             const dist = editDistance(person1.email_address, person2.email_address);
             if (dist <= similarEditDistance) {
-               duplicates.push([person1, person2]);
+                duplicates.push([person1, person2]);
             }
-            
+
             //TODO add alternative checks here:
             // - check for distance between names, titles
         }
@@ -31,24 +32,44 @@ export function DuplicatePeople(props: DuplicatePeopleProps) {
     return (
         <div>
             {duplicates.map(([p1, p2], i: number) => {
-               return (
-                   <div key={i}>
-                       <h2>Potential Duplicate:</h2>
-                       <PersonComponent
-                            firstName={p1.first_name}
-                            lastName={p1.last_name}
-                            email={p1.email_address}
-                            jobTitle={p1.title}
-                       />
-                       <PersonComponent
-                            firstName={p2.first_name}
-                            lastName={p2.last_name}
-                            email={p2.email_address}
-                            jobTitle={p2.title}
-                       />
-                   </div>
+                return (
+                    <DuplicatePeopleCard
+                        person1={p1}
+                        person2={p2}
+                    />
                 );
             })}
+        </div>
+    );
+}
+
+interface DuplicatePeopleCardProps {
+    person1: Person,
+    person2: Person,
+}
+
+function DuplicatePeopleCard(props: DuplicatePeopleCardProps) {
+    return (
+        <div className="card duplicate-card">
+            <div className="card-header">Potential Duplicate:</div>
+            <div className="card-content columns">
+                <div className="column">
+                    <PersonComponent
+                        firstName={props.person1.first_name}
+                        lastName={props.person1.last_name}
+                        email={props.person1.email_address}
+                        jobTitle={props.person1.title}
+                    />
+                </div>
+                <div className="column">
+                    <PersonComponent
+                        firstName={props.person2.first_name}
+                        lastName={props.person2.last_name}
+                        email={props.person2.email_address}
+                        jobTitle={props.person2.title}
+                    />
+                </div>
+            </div>
         </div>
     );
 }

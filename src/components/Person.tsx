@@ -1,5 +1,5 @@
 import React from 'react';
-import { frequencies } from '../utilities/Frequency';
+import './Person.css';
 
 
 interface PersonProps {
@@ -13,7 +13,7 @@ export function Person(props: PersonProps) {
     const name = props.firstName + " " + props.lastName;
 
     return (
-        <div>
+        <div className="person">
             <h4>Name: {name}</h4>
             <div>Email: {props.email}</div>
             <div>Job title: {props.jobTitle}</div>
