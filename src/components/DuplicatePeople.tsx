@@ -22,6 +22,9 @@ export function DuplicatePeople(props: DuplicatePeopleProps) {
             if (dist <= similarEditDistance) {
                duplicates.push([person1, person2]);
             }
+            
+            //TODO add alternative checks here:
+            // - check for distance between names, titles
         }
     }
 
