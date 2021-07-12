@@ -1,4 +1,5 @@
 import React from 'react';
+import './FrequencyChart.css';
 import { frequencies } from '../utilities/Frequency';
 
 
@@ -23,16 +24,27 @@ export function FrequencyChart(props: FrequencyChartProps) {
     const chart = freqs.map(
         ([char, freq]: [string, number], i: number) => {
             return (
-                <div key={i}>
-                    {char}: {freq}
-                </div>
+                <tr key={i}>
+                    <th>{i + 1}</th>
+                    <td>{char}</td>
+                    <td>{freq}</td>
+                </tr>
             );
         }
     );
 
     return (
-        <div>
-            {chart}
-        </div>
+        <table className="table frequencyTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Character</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                {chart}
+            </tbody>
+        </table>
     )
 }
